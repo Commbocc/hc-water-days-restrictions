@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@hcflgov/vue-html-wrapper/dist/HcHtmlWrapper.css"
+    />
+  </head>
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
+    </noscript>
+
+    <div class="py-5 container">
+      <div id="app">
+        <div is="HcWaterDaysRestrictions">
+          <!-- no provider -->
+          <div slot="wellSeptic">
+            No utility provider found. Perhaps you are on Well/Septic.
+          </div>
+
+          <!-- restrictions -->
+          <div slot="restrictionsSouthCounty">
+            <p>
+              Water use restrictions for this property are Hillsborough County
+              Temporary Watering Days and Times for South County. Please see the
+              table below.
+            </p>
+
+            <h4>Watering Days</h4>
+
+            <div class="table-responsive">
+              <table
+                class="table table-striped table-condensed table-sm table-bordered"
+              >
+                <tbody>
+                  <tr>
+                    <th width="50%">Addresses ending in 0 or 1</th>
+                    <td>Mondays</td>
+                  </tr>
+                  <tr>
+                    <th>Addresses ending in 2 or 3</th>
+                    <td>Tuesdays</td>
+                  </tr>
+                  <tr>
+                    <th>Addresses ending in 4 or 5</th>
+                    <td>Wednesdays</td>
+                  </tr>
+                  <tr>
+                    <th>Addresses ending in 6 or 7</th>
+                    <td>Thursdays</td>
+                  </tr>
+                  <tr>
+                    <th>Addresses ending in 8 or 9</th>
+                    <td>Fridays</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      Locations with no address and locations with mixed
+                      addresses (such as office complexes and shopping centers)
+                    </th>
+                    <td>Saturdays</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Watering Times</h4>
+
+            <p>
+              All watering must be done either between 8:30 a.m. and noon OR
+              after 6 p.m., and only once on your designated day.
+            </p>
+
+            <p>
+              Find more information at
+              <a href="#">HCFLGov.net/WaterRestrictions</a>
+            </p>
+          </div>
+
+          <div slot="restrictionsIncorporated">
+            <p>
+              Water use restrictions for this property are determined by a
+              jurisdiction other than Hillsborough County. Please contact your
+              provider for more information.
+            </p>
+          </div>
+
+          <div slot="restrictionsYearRound">
+            <p>
+              Water use restrictions for this property are Hillsborough County
+              Year-Round Watering Days and Times. Please see the table below.
+            </p>
+
+            <h4>Watering Days</h4>
+
+            <div class="table-responsive">
+              <table
+                class="table table-striped table-condensed table-sm table-bordered"
+              >
+                <tbody>
+                  <tr>
+                    <th width="50%">Addresses ending in 0, 1, 2 or 3</th>
+                    <td>Mondays and Thursdays</td>
+                  </tr>
+
+                  <tr>
+                    <th>Addresses ending in 4, 5 or 6</th>
+                    <td>Tuesdays and Fridays</td>
+                  </tr>
+                  <tr>
+                    <th>Addresses ending in 7, 8 or 9</th>
+                    <td>Wednesdays and Saturdays</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      Locations with no address (common areas) and locations
+                      with mixed addresses (such as office complexes)
+                    </th>
+                    <td>Wednesdays and Saturdays</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Watering Times</h4>
+
+            <p>
+              All watering must be done before 8 AM or after 6 PM, and only once
+              on your designated days.
+            </p>
+
+            <p>
+              Find more information at
+              <a href="#">HCFLGov.net/WaterRestrictions</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- built files will be auto injected -->
+  </body>
+</html>
