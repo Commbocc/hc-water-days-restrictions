@@ -2,6 +2,10 @@
   <div id="app">
     <HcEsriSearchForm ref="searchForm" @submit="reset" @result="handleResult" />
 
+    <div v-if="searching">
+      Searching...
+    </div>
+
     <div v-if="searchComplete">
       <Provider :provider="provider">
         <slot name="wellSeptic"></slot>
@@ -35,7 +39,8 @@ import { findProviderByName } from './store/providers'
 
 const southCountyAreaFeature = {
   url:
-    'https://services.arcgis.com/apTfC6SUmnNfnxuF/arcgis/rest/services/South_Central_Conservation_Boundary_Nov_2020/FeatureServer/0',
+    // 'https://services.arcgis.com/apTfC6SUmnNfnxuF/arcgis/rest/services/South_Central_Conservation_Boundary_Nov_2020/FeatureServer/0',
+    'https://services.arcgis.com/apTfC6SUmnNfnxuF/arcgis/rest/services/SouthCentral_Conservation_Boundary_April_2021/FeatureServer/0',
 }
 
 const allAreasFeature = {
@@ -60,6 +65,7 @@ export default {
   },
 
   data: () => ({
+    searching: false,
     searchComplete: false,
     southCounty: null,
     area: null,
@@ -76,23 +82,31 @@ export default {
       // this.waterSystem = null
     },
     async handleResult({ queryFeatures }) {
-      // test south county
       try {
-        this.southCounty = await queryFeatures(southCountyAreaFeature)
-      } catch (err) {
-        this.southCounty = false
-      }
+        this.searching = true
 
-      // test county/incorporated
-      try {
-        this.area = await queryFeatures(allAreasFeature)
-        this.provider = findProviderByName(this.area.attributes.AREA_NAME)
-        // this.waterSystem = this.area.attributes.Potable_Wa
-      } catch (err) {
-        // no results, well/septic. Restrictions still apply
-      }
+        // test south county
+        try {
+          this.southCounty = await queryFeatures(southCountyAreaFeature)
+        } catch (err) {
+          this.southCounty = false
+        }
 
-      this.searchComplete = true
+        // test county/incorporated
+        try {
+          this.area = await queryFeatures(allAreasFeature)
+          this.provider = findProviderByName(this.area.attributes.AREA_NAME)
+          // this.waterSystem = this.area.attributes.Potable_Wa
+        } catch (err) {
+          // no results, well/septic. Restrictions still apply
+        }
+      } catch (error) {
+        // eslint-disable-next-line
+        console.warn(error)
+      } finally {
+        this.searching = false
+        this.searchComplete = true
+      }
     },
   },
 }
