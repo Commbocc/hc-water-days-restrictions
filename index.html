@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+
+  <!-- Latest compiled and minified CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+    crossorigin="anonymous"
+  />
+
+  <body class="container">
+    <hc-water-restrictions> <!-- Search Form --> </hc-water-restrictions>
+
+    <hc-water-restrictions-slot name="yearRound">
+      <p>Year Round</p>
+    </hc-water-restrictions-slot>
+
+    <hc-water-restrictions-slot name="southCounty">
+      <p>South County</p>
+    </hc-water-restrictions-slot>
+
+    <hc-water-restrictions-slot name="incorporated">
+      <p>Incorporated</p>
+    </hc-water-restrictions-slot>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
