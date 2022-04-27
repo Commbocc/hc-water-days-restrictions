@@ -6,3 +6,14 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+interface IReactiveRestrictions {
+  loading: boolean
+  data?: WaterRestrictionType
+}
+
+type WaterRestrictionType =
+  | 'wellSeptic'
+  | 'southCounty'
+  | 'yearRound'
+  | 'incorporated'
